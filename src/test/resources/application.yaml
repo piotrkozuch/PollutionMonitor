@@ -1,0 +1,24 @@
+server:
+  port: 9001
+  servlet:
+    context-path: "/api/v0.1/"
+spring:
+  application:
+    name: "PollutionMonitor"
+  main:
+    banner-mode: "console"
+  jpa:
+    properties:
+      hibernate.show_sql: false
+      hibernate.format_sql: false
+      hibernate.jdbc.time_zone: "Europe/Warsaw"
+    hibernate:
+      ddl-auto: "validate"
+  datasource:
+    driver-class-name: "org.testcontainers.jdbc.ContainerDatabaseDriver"
+    url: "jdbc:tc:postgresql:11.1:///pollution_monitor_test_db"
+    username: "test"
+    password: "secret"
+logging:
+  level:
+    org.hibernate: info
