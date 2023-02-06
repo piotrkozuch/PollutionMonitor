@@ -12,6 +12,8 @@ import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
+import static io.github.piotrkozuch.utils.Checks.checkRequired;
+
 @Entity
 @Table(name = "measurements")
 public class Measurement {
@@ -20,19 +22,19 @@ public class Measurement {
     private UUID id;
 
     @Column(nullable = false)
-    private double humidityAvg;
+    private Double humidityAvg;
 
     @Column(nullable = false)
-    private double pressureAvg;
+    private Double pressureAvg;
 
     @Column(nullable = false)
-    private double temperatureAvg;
+    private Double temperatureAvg;
 
     @Column(name = "pm10_avg", nullable = false)
-    private double pm10Avg;
+    private Double pm10Avg;
 
     @Column(name = "pm25_avg", nullable = false)
-    private double pm25Avg;
+    private Double pm25Avg;
 
     @Column(nullable = false)
     private Instant createdDate;
@@ -46,47 +48,47 @@ public class Measurement {
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.id = checkRequired("id", id);
     }
 
-    public double getHumidityAvg() {
+    public Double getHumidityAvg() {
         return humidityAvg;
     }
 
-    public void setHumidityAvg(double humidityAvg) {
-        this.humidityAvg = humidityAvg;
+    public void setHumidityAvg(Double humidityAvg) {
+        this.humidityAvg = checkRequired("humidityAvg", humidityAvg);
     }
 
-    public double getPressureAvg() {
+    public Double getPressureAvg() {
         return pressureAvg;
     }
 
-    public void setPressureAvg(double pressureAvg) {
-        this.pressureAvg = pressureAvg;
+    public void setPressureAvg(Double pressureAvg) {
+        this.pressureAvg = checkRequired("pressureAvg", pressureAvg);
     }
 
-    public double getTemperatureAvg() {
+    public Double getTemperatureAvg() {
         return temperatureAvg;
     }
 
-    public void setTemperatureAvg(double temperatureAvg) {
-        this.temperatureAvg = temperatureAvg;
+    public void setTemperatureAvg(Double temperatureAvg) {
+        this.temperatureAvg = checkRequired("temperatureAvg", temperatureAvg);
     }
 
-    public double getPm10Avg() {
+    public Double getPm10Avg() {
         return pm10Avg;
     }
 
-    public void setPm10Avg(double pm10Avg) {
-        this.pm10Avg = pm10Avg;
+    public void setPm10Avg(Double pm10Avg) {
+        this.pm10Avg = checkRequired("pm10Avg", pm10Avg);
     }
 
-    public double getPm25Avg() {
+    public Double getPm25Avg() {
         return pm25Avg;
     }
 
-    public void setPm25Avg(double pm25Avg) {
-        this.pm25Avg = pm25Avg;
+    public void setPm25Avg(Double pm25Avg) {
+        this.pm25Avg = checkRequired("pm25Avg", pm25Avg);
     }
 
     public Instant getCreatedDate() {
@@ -94,7 +96,7 @@ public class Measurement {
     }
 
     public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
+        this.createdDate = checkRequired("createdDate", createdDate);
     }
 
     public MeasurementStation getMeasurementStation() {
@@ -110,7 +112,14 @@ public class Measurement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Measurement that = (Measurement) o;
-        return Double.compare(that.humidityAvg, humidityAvg) == 0 && Double.compare(that.pressureAvg, pressureAvg) == 0 && Double.compare(that.temperatureAvg, temperatureAvg) == 0 && Double.compare(that.pm10Avg, pm10Avg) == 0 && Double.compare(that.pm25Avg, pm25Avg) == 0 && Objects.equals(id, that.id) && Objects.equals(createdDate, that.createdDate) && Objects.equals(measurementStation, that.measurementStation);
+        return Double.compare(that.humidityAvg, humidityAvg) == 0
+            && Double.compare(that.pressureAvg, pressureAvg) == 0
+            && Double.compare(that.temperatureAvg, temperatureAvg) == 0
+            && Double.compare(that.pm10Avg, pm10Avg) == 0
+            && Double.compare(that.pm25Avg, pm25Avg) == 0 &&
+            Objects.equals(id, that.id) &&
+            Objects.equals(createdDate, that.createdDate)
+            && Objects.equals(measurementStation, that.measurementStation);
     }
 
     @Override
@@ -128,7 +137,6 @@ public class Measurement {
             ", pm10Avg=" + pm10Avg +
             ", pm25Avg=" + pm25Avg +
             ", createdDate=" + createdDate +
-            ", measurementStation=" + measurementStation +
             '}';
     }
 }

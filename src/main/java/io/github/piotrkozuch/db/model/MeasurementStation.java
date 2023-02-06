@@ -4,7 +4,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -14,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
+import static io.github.piotrkozuch.utils.Checks.checkRequired;
 
 @Entity
 @Table(name = "measurement_stations")
@@ -40,8 +41,7 @@ public class MeasurementStation {
     @OneToMany(
         mappedBy = "measurementStation",
         cascade = CascadeType.ALL,
-        orphanRemoval = true,
-        fetch = FetchType.EAGER
+        orphanRemoval = true
     )
     private List<Measurement> measurements = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class MeasurementStation {
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.id = checkRequired("id", id);
     }
 
     public String getName() {
@@ -58,7 +58,7 @@ public class MeasurementStation {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = checkRequired("name", name);
     }
 
     public Address getAddress() {
@@ -66,7 +66,7 @@ public class MeasurementStation {
     }
 
     public void setAddress(Address address) {
-        this.address = address;
+        this.address = checkRequired("address", address);
     }
 
     public GPSLocation getGpsLocation() {
@@ -74,7 +74,7 @@ public class MeasurementStation {
     }
 
     public void setGpsLocation(GPSLocation gpsLocation) {
-        this.gpsLocation = gpsLocation;
+        this.gpsLocation = checkRequired("gpsLocation", gpsLocation);
     }
 
     public Instant getCreatedDate() {
@@ -82,7 +82,7 @@ public class MeasurementStation {
     }
 
     public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
+        this.createdDate = checkRequired("createdDate", createdDate);
     }
 
     public Instant getUpdatedDate() {
@@ -90,7 +90,7 @@ public class MeasurementStation {
     }
 
     public void setUpdatedDate(Instant updatedDate) {
-        this.updatedDate = updatedDate;
+        this.updatedDate = checkRequired("updatedDate", updatedDate);
     }
 
     public List<Measurement> getMeasurements() {
@@ -98,7 +98,7 @@ public class MeasurementStation {
     }
 
     public void setMeasurements(List<Measurement> measurements) {
-        this.measurements = measurements;
+        this.measurements = checkRequired("measurements", measurements);
     }
 
     @Override
@@ -106,7 +106,13 @@ public class MeasurementStation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MeasurementStation that = (MeasurementStation) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(address, that.address) && Objects.equals(gpsLocation, that.gpsLocation) && Objects.equals(createdDate, that.createdDate) && Objects.equals(updatedDate, that.updatedDate) && Objects.equals(measurements, that.measurements);
+        return Objects.equals(id, that.id)
+            && Objects.equals(name, that.name)
+            && Objects.equals(address, that.address)
+            && Objects.equals(gpsLocation, that.gpsLocation)
+            && Objects.equals(createdDate, that.createdDate)
+            && Objects.equals(updatedDate, that.updatedDate)
+            && Objects.equals(measurements, that.measurements);
     }
 
     @Override
@@ -123,7 +129,6 @@ public class MeasurementStation {
             ", gpsLocation=" + gpsLocation +
             ", createdDate=" + createdDate +
             ", updatedDate=" + updatedDate +
-            ", measurements=" + measurements +
             '}';
     }
 }

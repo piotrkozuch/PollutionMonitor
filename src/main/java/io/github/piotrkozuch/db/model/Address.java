@@ -5,6 +5,8 @@ import jakarta.persistence.Embeddable;
 
 import java.util.Objects;
 
+import static io.github.piotrkozuch.utils.Checks.checkRequired;
+
 @Embeddable
 public class Address {
 
@@ -22,7 +24,7 @@ public class Address {
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.city = checkRequired("city", city);
     }
 
     public String getPostcode() {

@@ -2,6 +2,7 @@ package io.github.piotrkozuch.db;
 
 import io.github.piotrkozuch.db.model.Address;
 import io.github.piotrkozuch.db.model.GPSLocation;
+import io.github.piotrkozuch.db.model.Measurement;
 import io.github.piotrkozuch.db.model.MeasurementStation;
 
 import java.util.Random;
@@ -43,5 +44,21 @@ public interface MeasurementStationsTestData {
         gpsLocation.setLongitude(random.nextDouble());
 
         return gpsLocation;
+    }
+
+    default Measurement aMeasurementFor(MeasurementStation measurementStation){
+        final var random = new Random();
+        final var measurement = new Measurement();
+
+        measurement.setId(randomUUID());
+        measurement.setMeasurementStation(measurementStation);
+        measurement.setCreatedDate(now());
+        measurement.setHumidityAvg(random.nextDouble());
+        measurement.setPm10Avg(random.nextDouble());
+        measurement.setPm25Avg(random.nextDouble());
+        measurement.setPressureAvg(random.nextDouble());
+        measurement.setTemperatureAvg(random.nextDouble());
+
+        return measurement;
     }
 }

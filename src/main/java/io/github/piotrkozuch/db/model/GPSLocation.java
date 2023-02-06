@@ -5,29 +5,31 @@ import jakarta.persistence.Embeddable;
 
 import java.util.Objects;
 
+import static io.github.piotrkozuch.utils.Checks.checkRequired;
+
 @Embeddable
 public class GPSLocation {
 
     @Column(nullable = false)
-    private double latitude;
+    private Double latitude;
 
     @Column(nullable = false)
-    private double longitude;
+    private Double longitude;
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setLatitude(Double latitude) {
+        this.latitude = checkRequired("latitude", latitude);
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = checkRequired("longitude", longitude);
     }
 
     @Override
@@ -35,7 +37,8 @@ public class GPSLocation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GPSLocation that = (GPSLocation) o;
-        return Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0;
+        return Double.compare(that.latitude, latitude) == 0
+            && Double.compare(that.longitude, longitude) == 0;
     }
 
     @Override

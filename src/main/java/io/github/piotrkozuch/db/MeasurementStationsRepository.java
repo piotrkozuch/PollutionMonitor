@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface MeasurementStationsRepository extends JpaRepository<MeasurementStation, UUID> {
+public interface MeasurementStationsRepository extends JpaRepository<MeasurementStation, UUID>, CustomMeasurementStationRepository {
 
 }
