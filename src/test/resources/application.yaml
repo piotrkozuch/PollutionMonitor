@@ -22,3 +22,6 @@ spring:
 logging:
   level:
     org.hibernate: info
+
+esa-integration:
+  ulr: "http://public-esa.ose.gov.pl"

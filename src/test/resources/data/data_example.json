@@ -1,0 +1,42 @@
+{
+  "smog_data": [
+    {
+      "school": {
+        "name": "SZKOŁA PODSTAWOWA IM. JANA PAWŁA II W RACŁAWICACH ŚLĄSKICH",
+        "street": "UL. ZWYCIĘSTWA",
+        "post_code": "48-250",
+        "city": "RACŁAWICE ŚLĄSKIE",
+        "longitude": "17.771528",
+        "latitude": "50.311402"
+      },
+      "data": {
+        "humidity_avg": 92.825,
+        "pressure_avg": 1010.6333333333333,
+        "temperature_avg": 1.375,
+        "pm10_avg": 88.40833333333335,
+        "pm25_avg": 61.23333333333333
+      },
+      "timestamp": "2023-02-15 21:05:55"
+    },
+    {
+      "school": {
+        "name": "SZKOŁA PODSTAWOWA NR 6 IM. MARII CURIE-SKŁODOWSKIEJ W ZABRZU",
+        "street": "UL. KLONOWA",
+        "post_code": "41-800",
+        "city": "ZABRZE",
+        "longitude": "18.8800148",
+        "latitude": "50.3207572"
+      },
+      "data": {
+        "humidity_avg": 75.85000000000001,
+        "pressure_avg": 1005.15,
+        "temperature_avg": 4.3999999999999995,
+        "pm10_avg": 34.59166666666667,
+        "pm25_avg": 25.349999999999998
+      },
+      "timestamp": "2023-02-15 21:05:55"
+    }
+  ],
+  "it_has_next_page": true,
+  "pages_total": 2
+}
