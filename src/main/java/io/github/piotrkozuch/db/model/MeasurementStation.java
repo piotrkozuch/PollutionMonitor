@@ -101,6 +101,10 @@ public class MeasurementStation {
         this.measurements = checkRequired("measurements", measurements);
     }
 
+    public void addMeasurement(Measurement measurement){
+        this.measurements.add(measurement);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

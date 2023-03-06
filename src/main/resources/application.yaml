@@ -12,7 +12,7 @@ spring:
       ddl-auto: "validate"
   datasource:
     platform: "postgres"
-    url: "jdbc:postgresql://database:5432/pollution_tracker"
+    url: "jdbc:postgresql://database:5432/pollution_monitor"
     username: "admin"
     password: "secret"
 

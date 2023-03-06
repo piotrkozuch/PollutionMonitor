@@ -3,6 +3,7 @@ package io.github.piotrkozuch.integration.esa.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static io.github.piotrkozuch.utils.Checks.checkRequired;
@@ -19,4 +20,39 @@ public record SmogDataPage(List<SmogData> smogData,
         this.hasNextPage = checkRequired("hasNextPage", hasNextPage);
         this.pagesTotal = checkRequired("pagesTotal", pagesTotal);
     }
+
+    public static class SmogDataPageBuilder {
+
+        private List<SmogData> smogData = new ArrayList<>();
+        private Boolean hasNextPage;
+        private Long pagesTotal;
+
+        private SmogDataPageBuilder() {
+
+        }
+
+        public static SmogDataPageBuilder builder() {
+            return new SmogDataPageBuilder();
+        }
+
+        public SmogDataPage build() {
+            return new SmogDataPage(smogData, hasNextPage, pagesTotal);
+        }
+
+        public SmogDataPageBuilder smogData(List<SmogData> smogData) {
+            this.smogData = smogData;
+            return this;
+        }
+
+        public SmogDataPageBuilder hasNextPage(Boolean hasNextPage) {
+            this.hasNextPage = hasNextPage;
+            return this;
+        }
+
+        public SmogDataPageBuilder pagesTotal(Long pagesTotal) {
+            this.pagesTotal = pagesTotal;
+            return this;
+        }
+    }
+
 }

@@ -13,8 +13,8 @@ import java.net.URI;
 public class IntegrationConfig {
 
     @Bean
-    public ESAClient esaClient(@Value("${esa-integration.url}") String url) {
-        return new ESAHttpClient(new RestTemplate(), URI.create(url));
+    public ESAClient esaClient() {
+        return new ESAHttpClient(new RestTemplate(), URI.create("https://public-esa.ose.gov.pl"));
     }
 
 }
