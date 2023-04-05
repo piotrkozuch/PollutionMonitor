@@ -21,7 +21,7 @@ public interface ESASmogTestData {
     default SmogData.SmogDataBuilder aSmogData() {
         final var random = new Random();
         final var measurementData = aMeasurementData(random);
-        final var school = aSchool();
+        final var school = aSchool().build();
 
         return SmogData.SmogDataBuilder.builder()
             .data(measurementData)
@@ -29,24 +29,24 @@ public interface ESASmogTestData {
             .timestamp("2023-02-15 21:05:55");
     }
 
-    default School aSchool() {
+    default School.SchoolBuilder aSchool() {
         final var random = new Random();
-        return new School(
-            "School " + random.nextInt(),
-            "30-392",
-            "City",
-            random.nextDouble(),
-            random.nextDouble(),
-            Optional.of("street"));
+        return School.SchoolBuilder.builder()
+            .name("School")
+            .postcode("30-392")
+            .city("City")
+            .latitude(random.nextDouble())
+            .longitude(random.nextDouble())
+            .street(Optional.of("Street"));
     }
 
     default MeasurementData aMeasurementData(Random random) {
         return new MeasurementData(
-            random.nextDouble(),
-            random.nextDouble(),
-            random.nextDouble(),
-            random.nextDouble(),
-            random.nextDouble()
+            Optional.of(random.nextDouble()),
+            Optional.of(random.nextDouble()),
+            Optional.of(random.nextDouble()),
+            Optional.of(random.nextDouble()),
+            Optional.of(random.nextDouble())
         );
     }
 }

@@ -101,7 +101,7 @@ public class MeasurementStation {
         this.measurements = checkRequired("measurements", measurements);
     }
 
-    public void addMeasurement(Measurement measurement){
+    public void addMeasurement(Measurement measurement) {
         this.measurements.add(measurement);
     }
 

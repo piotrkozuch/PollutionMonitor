@@ -10,11 +10,17 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 
 @Configuration
-public class IntegrationConfig {
+public class ESAIntegrationConfig {
+
+    private final String url;
+
+    public ESAIntegrationConfig(@Value("${esa-integration.url}") String url) {
+        this.url = url;
+    }
 
     @Bean
     public ESAClient esaClient() {
-        return new ESAHttpClient(new RestTemplate(), URI.create("https://public-esa.ose.gov.pl"));
+        return new ESAHttpClient(new RestTemplate(), URI.create(url));
     }
 
 }

@@ -6,7 +6,6 @@ import io.github.piotrkozuch.db.model.Measurement;
 import io.github.piotrkozuch.db.model.MeasurementStation;
 
 import java.util.Random;
-import java.util.UUID;
 
 import static java.time.Instant.now;
 import static java.util.UUID.randomUUID;
@@ -46,7 +45,7 @@ public interface MeasurementStationsTestData {
         return gpsLocation;
     }
 
-    default Measurement aMeasurementFor(MeasurementStation measurementStation){
+    default Measurement aMeasurementFor(MeasurementStation measurementStation) {
         final var random = new Random();
         final var measurement = new Measurement();
 

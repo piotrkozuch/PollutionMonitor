@@ -28,4 +28,56 @@ public record School(String name,
         this.latitude = checkRequired("latitude", latitude);
         this.street = street;
     }
+
+    public static class SchoolBuilder {
+
+        private String name;
+        private String postcode;
+        private String city;
+        private Double longitude;
+        private Double latitude;
+        private Optional<String> street;
+
+        private SchoolBuilder() {
+
+        }
+
+        public static SchoolBuilder builder() {
+            return new SchoolBuilder();
+        }
+
+        public School build() {
+            return new School(name, postcode, city, longitude, latitude, street);
+        }
+
+        public SchoolBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public SchoolBuilder postcode(String postcode) {
+            this.postcode = postcode;
+            return this;
+        }
+
+        public SchoolBuilder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public SchoolBuilder longitude(Double longitude) {
+            this.longitude = longitude;
+            return this;
+        }
+
+        public SchoolBuilder latitude(Double latitude) {
+            this.latitude = latitude;
+            return this;
+        }
+
+        public SchoolBuilder street(Optional<String> street) {
+            this.street = street;
+            return this;
+        }
+    }
 }

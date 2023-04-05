@@ -10,4 +10,6 @@ services:
       POSTGRES_USER: "admin"
       POSTGRES_PASSWORD: "secret"
       POSTGRES_DB: "pollution_monitor"
+    ports:
+      - "7002:5432"
 

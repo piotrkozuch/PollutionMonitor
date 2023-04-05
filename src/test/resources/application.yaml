@@ -24,4 +24,4 @@ logging:
     org.hibernate: info
 
 esa-integration:
-  ulr: "http://public-esa.ose.gov.pl"
+  url: "http://public-esa.ose.gov.pl"

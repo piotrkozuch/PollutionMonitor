@@ -21,19 +21,17 @@ public class Measurement {
     @Id
     private UUID id;
 
-    @Column(nullable = false)
     private Double humidityAvg;
 
-    @Column(nullable = false)
     private Double pressureAvg;
 
-    @Column(nullable = false)
+    @Column
     private Double temperatureAvg;
 
-    @Column(name = "pm10_avg", nullable = false)
+    @Column(name = "pm10_avg")
     private Double pm10Avg;
 
-    @Column(name = "pm25_avg", nullable = false)
+    @Column(name = "pm25_avg")
     private Double pm25Avg;
 
     @Column(nullable = false)
@@ -56,7 +54,7 @@ public class Measurement {
     }
 
     public void setHumidityAvg(Double humidityAvg) {
-        this.humidityAvg = checkRequired("humidityAvg", humidityAvg);
+        this.humidityAvg = humidityAvg;
     }
 
     public Double getPressureAvg() {
@@ -64,7 +62,7 @@ public class Measurement {
     }
 
     public void setPressureAvg(Double pressureAvg) {
-        this.pressureAvg = checkRequired("pressureAvg", pressureAvg);
+        this.pressureAvg = pressureAvg;
     }
 
     public Double getTemperatureAvg() {
@@ -72,7 +70,7 @@ public class Measurement {
     }
 
     public void setTemperatureAvg(Double temperatureAvg) {
-        this.temperatureAvg = checkRequired("temperatureAvg", temperatureAvg);
+        this.temperatureAvg = temperatureAvg;
     }
 
     public Double getPm10Avg() {
@@ -80,7 +78,7 @@ public class Measurement {
     }
 
     public void setPm10Avg(Double pm10Avg) {
-        this.pm10Avg = checkRequired("pm10Avg", pm10Avg);
+        this.pm10Avg = pm10Avg;
     }
 
     public Double getPm25Avg() {
@@ -88,7 +86,7 @@ public class Measurement {
     }
 
     public void setPm25Avg(Double pm25Avg) {
-        this.pm25Avg = checkRequired("pm25Avg", pm25Avg);
+        this.pm25Avg = pm25Avg;
     }
 
     public Instant getCreatedDate() {
@@ -104,7 +102,7 @@ public class Measurement {
     }
 
     public void setMeasurementStation(MeasurementStation measurementStation) {
-        this.measurementStation = measurementStation;
+        this.measurementStation = checkRequired("measurementStation", measurementStation);
     }
 
     @Override

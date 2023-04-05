@@ -13,7 +13,7 @@ public class ESAPullSmogDataJob {
 
     private static final Logger LOG = LoggerFactory.getLogger(ESAPullSmogDataJob.class);
     private static final long INITIAL_DELAY = 1000 * 60;
-    private static final long EXECUTION_INTERVAL = 1000 * 60 * 60;
+    private static final long EXECUTION_INTERVAL = 1000 * 60 * 5;
 
     private final ESASmogDataImporter esaSmogDataImporter;
 
@@ -23,9 +23,11 @@ public class ESAPullSmogDataJob {
     }
 
     @Scheduled(initialDelay = INITIAL_DELAY, fixedRate = EXECUTION_INTERVAL)
-    public void reportCurrentTime() {
+    public void importSmogData() {
+        LOG.info("Importing ESA smog data.");
         try {
             esaSmogDataImporter.importSmogData();
+            LOG.info("ESA smog data import completed.");
         } catch (RuntimeException e) {
             LOG.error("Smog data import failed!", e);
         }

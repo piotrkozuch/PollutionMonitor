@@ -53,11 +53,11 @@ class ESAHttpClientTest implements ESAIntegrationTestData {
         assertThat(school.street()).hasValue("UL. ZWYCIĘSTWA");
 
         var data = smogData.data();
-        assertThat(data.humidityAvg()).isEqualTo(92.825);
-        assertThat(data.pressureAvg()).isEqualTo(1010.6333333333333);
-        assertThat(data.temperatureAvg()).isEqualTo(1.375);
-        assertThat(data.pm10Avg()).isEqualTo(88.40833333333335);
-        assertThat(data.pm25Avg()).isEqualTo(61.23333333333333);
+        assertThat(data.humidityAvg()).hasValue(92.825);
+        assertThat(data.pressureAvg()).hasValue(1010.6333333333333);
+        assertThat(data.temperatureAvg()).hasValue(1.375);
+        assertThat(data.pm10Avg()).hasValue(88.40833333333335);
+        assertThat(data.pm25Avg()).hasValue(61.23333333333333);
     }
 
 }

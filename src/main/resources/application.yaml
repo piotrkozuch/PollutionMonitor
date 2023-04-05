@@ -8,13 +8,14 @@ spring:
   main:
     banner-mode: "console"
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: "validate"
   datasource:
     platform: "postgres"
-    url: "jdbc:postgresql://database:5432/pollution_monitor"
+    url: "jdbc:postgresql://localhost:7002/pollution_monitor"
     username: "admin"
     password: "secret"
 
 esa-integration:
-  ulr: "https://public-esa.ose.gov.pl"
+  url: "https://public-esa.ose.gov.pl"
