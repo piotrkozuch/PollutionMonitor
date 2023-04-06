@@ -9,9 +9,11 @@ spring:
     banner-mode: "console"
   jpa:
     properties:
-      hibernate.show_sql: false
-      hibernate.format_sql: false
-      hibernate.jdbc.time_zone: "Europe/Warsaw"
+      hibernate:
+        show_sql: true
+        format_sql: true
+        jdbc:
+          time_zone: "Europe/Warsaw"
     hibernate:
       ddl-auto: "validate"
   datasource:
